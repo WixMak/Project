@@ -33,10 +33,6 @@ void setup() {
 
 }
 
-void loop() {
- 
-}
-
 void light_trigger() {
         digitalWrite(red_led, HIGH); // turn on red led
         digitalWrite(blue_led, HIGH); // turn on blue led
