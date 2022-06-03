@@ -23,8 +23,8 @@ void setup() {
     pinMode(blue_led, OUTPUT); //set blue led pin mode
     
     Spark.variable("cm", &cm, DOUBLE); //declared and read the variable
-    Spark.function("lightup", read_light);
-    Spark.function("distance_check", get_distance);
+    Spark.function("lightup", read_light); //declared the event name and call the function once received the request
+    Spark.function("distance_check", get_distance); //declared the event name and call the function once received the request
     
     pinMode(buzzer, OUTPUT); //set buzzer pin mode
     
@@ -54,7 +54,7 @@ int read_light(String c) {
     float lv = sensor.get_light_level(); // return light level
     
     if(lv < 250){ // check light level is lower than 250 or not
-       light_trigger();
+       light_trigger(); // blink LEDs
      }
     return 1;
 }
@@ -63,9 +63,7 @@ int get_distance(String c) {
     cm = rangefinder.getDistanceCM(); // get the distance (cm)
     Serial.print("dist:"); // print 'dist:' on serial monitor
     Serial.println(cm); // print distance on serial monitor
-    
-    buzzer_trigger(cm);
-    
+    buzzer_trigger(cm); //activate buzzer
     return 1; // return dustance (cm)
 }
 
